@@ -13,7 +13,7 @@ class ChillGuyApp extends StatefulWidget {
 class _ChillGuyAppState extends State<ChillGuyApp> {
   Timer? _timer;
   int _remainingTime = 10; // Countdown time in seconds
- bool _isTimerRunning = false;
+  bool _isTimerRunning = false;
   void _startTimer() {
     setState(() {
       _remainingTime = 10; // Set the timer to 10 seconds
@@ -51,13 +51,39 @@ class _ChillGuyAppState extends State<ChillGuyApp> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text(
-          "Chill Guy",
+          "chillguy",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text("how to use"),
+                      content: const Text("1. open the app.\n"
+                          "2. press the big button.\n"
+                          "3. relax and watch the 10-second timer.\n"
+                          "4. the app will close automatically."),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text("OK"),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: const Icon(Icons.info_outline))
+        ],
       ),
       body: Container(
-        color: Colors.blueGrey[50], // Adding a light background color for contrast
+        color:
+            Colors.blueGrey[50], // Adding a light background color for contrast
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
@@ -68,7 +94,8 @@ class _ChillGuyAppState extends State<ChillGuyApp> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 14.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15.0), // Rounded corners for image
+                  borderRadius:
+                      BorderRadius.circular(15.0), // Rounded corners for image
                   child: Image.asset(
                     'assets/95c.png',
                     height: 300,
@@ -80,7 +107,7 @@ class _ChillGuyAppState extends State<ChillGuyApp> {
 
               // Time Remaining Text
               Text(
-                'Chill Time: $_remainingTime seconds',
+                'chill time: $_remainingTime seconds',
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -93,22 +120,27 @@ class _ChillGuyAppState extends State<ChillGuyApp> {
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
-                  'Press this button to be a chill guy:',
+                  'press this button to be a chill guy:',
                   style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
                 ),
               ),
 
               // Chill Button
               ElevatedButton(
-                onPressed: _isTimerRunning ? null : _startTimer, // Disable when timer is running
+                onPressed: _isTimerRunning
+                    ? null
+                    : _startTimer, // Disable when timer is running
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30), // Rounded button
                   ),
                 ),
                 child: Text(
-                  _isTimerRunning ? "Chillin..." : "Take a Chill", // Change text while running
+                  _isTimerRunning
+                      ? "chillin..."
+                      : "take a chill", // Change text while running
                   style: const TextStyle(fontSize: 18),
                 ),
               ),

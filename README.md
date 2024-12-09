@@ -9,6 +9,10 @@ Welcome to **Chill Guy App** – the app that understands that sometimes, you ju
 
 ---
 
+## Screenshots:
+![Welcome Screen](/screenshots/1.png)
+---
+
 ## How to Use:
 1. **Open the app**. You can’t be too chill if you don't open it, right?
 2. **Press the Big Button**. Don’t overthink it. Just press it. Feel the power.
